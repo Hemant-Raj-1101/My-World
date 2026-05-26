@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MY WORLD — OAF</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@1,400;1,600&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--              LOGIN SCREEN                  -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div id="login-screen" class="screen active">
+    <div class="login-bg-shapes">
+      <div class="shape s1"></div>
+      <div class="shape s2"></div>
+      <div class="shape s3"></div>
+    </div>
+    <div class="login-card">
+      <div class="login-emoji-row">🌟✨🧠</div>
+      <h1 class="login-title">MY WORLD</h1>
+      <p class="login-sub">Your personal operating system 🚀</p>
+      <div class="input-group">
+        <span class="input-icon">👤</span>
+        <input type="text" id="login-username" placeholder="Username" autocomplete="off" />
+      </div>
+      <div class="input-group">
+        <span class="input-icon">🔒</span>
+        <input type="password" id="login-password" placeholder="Password" />
+      </div>
+      <p id="login-error" class="error-msg hidden">❌ Wrong credentials. Try again!</p>
+      <button id="login-btn" class="btn-primary">Enter My World 🌍</button>
+      <p class="login-hint">A space built just for you 💛</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--           MODE 1 — ACADEMIC DASHBOARD      -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div id="dashboard-screen" class="screen">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <span class="logo-emoji">🌞</span>
+        <span class="logo-text">MY WORLD</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-section="overview">🏠 Dashboard</a>
+        <a href="#" class="nav-item" data-section="daily-goals">📅 Daily Goals</a>
+        <a href="#" class="nav-item" data-section="weekly-goals">📆 Weekly Goals</a>
+        <a href="#" class="nav-item" data-section="checklist">✅ Checklist</a>
+        <a href="#" class="nav-item" data-section="mood">😊 Mood Tracker</a>
+        <a href="#" class="nav-item" data-section="satisfaction">⭐ Satisfaction</a>
+        <a href="#" class="nav-item" data-section="notes">📝 Quick Notes</a>
+        <a href="#" class="nav-item" data-section="analytics">📊 Analytics</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button id="vault-btn" class="vault-btn">🌑 Enter Vault</button>
+        <button id="logout-btn" class="logout-btn">🚪 Logout</button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <!-- TOPBAR -->
+      <div class="topbar">
+        <div class="topbar-left">
+          <button class="hamburger" id="hamburger">☰</button>
+          <h2 class="page-title" id="page-title">Dashboard 🏠</h2>
+        </div>
+        <div class="topbar-right">
+          <span id="current-date-display" class="date-display"></span>
+          <div class="user-chip">👋 Hemant</div>
+        </div>
+      </div>
+
+      <!-- ── OVERVIEW SECTION ── -->
+      <section id="section-overview" class="content-section active">
+        <div class="welcome-banner">
+          <div class="welcome-text">
+            <h2>Good to see you, Hemant! 🌟</h2>
+            <p>Here's your world at a glance ✨</p>
+          </div>
+          <div class="welcome-emoji">🧠</div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-card" style="--accent:#6ee7b7">
+            <div class="stat-icon">📅</div>
+            <div class="stat-info">
+              <span class="stat-num" id="stat-daily">0</span>
+              <span class="stat-label">Daily Goals</span>
+            </div>
+          </div>
+          <div class="stat-card" style="--accent:#93c5fd">
+            <div class="stat-icon">✅</div>
+            <div class="stat-info">
+              <span class="stat-num" id="stat-tasks">0</span>
+              <span class="stat-label">Tasks Done</span>
+            </div>
+          </div>
+          <div class="stat-card" style="--accent:#fca5a5">
+            <div class="stat-icon">😊</div>
+            <div class="stat-info">
+              <span class="stat-num" id="stat-mood">—</span>
+              <span class="stat-label">Today's Mood</span>
+            </div>
+          </div>
+          <div class="stat-card" style="--accent:#fcd34d">
+            <div class="stat-icon">📝</div>
+            <div class="stat-info">
+              <span class="stat-num" id="stat-notes">0</span>
+              <span class="stat-label">Notes Saved</span>
+            </div>
+          </div>
+        </div>
+        <!-- Quick mood log on overview -->
+        <div class="card">
+          <h3 class="card-title">How are you feeling right now? 💭</h3>
+          <div class="quick-mood-row">
+            <button class="mood-btn" data-mood="😊">😊</button>
+            <button class="mood-btn" data-mood="😐">😐</button>
+            <button class="mood-btn" data-mood="😔">😔</button>
+            <button class="mood-btn" data-mood="😡">😡</button>
+            <button class="mood-btn" data-mood="😴">😴</button>
+            <button class="mood-btn" data-mood="😌">😌</button>
+          </div>
+          <p id="quick-mood-feedback" class="mood-feedback"></p>
+        </div>
+      </section>
+
+      <!-- ── DAILY GOALS SECTION ── -->
+      <section id="section-daily-goals" class="content-section">
+        <div class="section-header">
+          <h2>📅 Daily Goals</h2>
+          <p>Set what you want to achieve today 💪</p>
+        </div>
+        <div class="card form-card">
+          <div class="form-row">
+            <input type="text" id="daily-goal-input" class="text-input" placeholder="✏️ Enter your goal..." />
+          </div>
+          <div class="form-row form-row-split">
+            <select id="daily-goal-priority" class="select-input">
+              <option value="Low">🟢 Low Priority</option>
+              <option value="Medium">🟡 Medium Priority</option>
+              <option value="High">🔴 High Priority</option>
+            </select>
+            <input type="date" id="daily-goal-date" class="date-input" />
+          </div>
+          <button id="add-daily-goal" class="btn-primary">➕ Add Goal</button>
+        </div>
+        <div id="daily-goals-list" class="goals-list"></div>
+      </section>
+
+      <!-- ── WEEKLY GOALS SECTION ── -->
+      <section id="section-weekly-goals" class="content-section">
+        <div class="section-header">
+          <h2>📆 Weekly Goals</h2>
+          <p>Plan your week with intention 🗓️</p>
+        </div>
+        <div class="card form-card">
+          <div class="form-row">
+            <input type="text" id="weekly-goal-input" class="text-input" placeholder="✏️ Enter your weekly goal..." />
+          </div>
+          <div class="form-row form-row-split">
+            <select id="weekly-goal-priority" class="select-input">
+              <option value="Low">🟢 Low Priority</option>
+              <option value="Medium">🟡 Medium Priority</option>
+              <option value="High">🔴 High Priority</option>
+            </select>
+            <input type="date" id="weekly-goal-date" class="date-input" />
+          </div>
+          <button id="add-weekly-goal" class="btn-primary">➕ Add Goal</button>
+        </div>
+        <div id="weekly-goals-list" class="goals-list"></div>
+      </section>
+
+      <!-- ── CHECKLIST SECTION ── -->
+      <section id="section-checklist" class="content-section">
+        <div class="section-header">
+          <h2>✅ Task Checklist</h2>
+          <p>Track every little win 🏆</p>
+        </div>
+        <div class="card form-card">
+          <div class="form-row form-row-split">
+            <input type="text" id="task-input" class="text-input" placeholder="📌 Add a task..." />
+            <button id="add-task" class="btn-primary">➕ Add</button>
+          </div>
+        </div>
+        <div id="task-list" class="task-list"></div>
+      </section>
+
+      <!-- ── MOOD TRACKER SECTION ── -->
+      <section id="section-mood" class="content-section">
+        <div class="section-header">
+          <h2>😊 Mood Tracker</h2>
+          <p>Check in with yourself daily 🌈</p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Log Today's Mood</h3>
+          <div class="mood-grid">
+            <button class="mood-big-btn" data-mood="😊">😊<span>Happy</span></button>
+            <button class="mood-big-btn" data-mood="😐">😐<span>Neutral</span></button>
+            <button class="mood-big-btn" data-mood="😔">😔<span>Sad</span></button>
+            <button class="mood-big-btn" data-mood="😡">😡<span>Angry</span></button>
+            <button class="mood-big-btn" data-mood="😴">😴<span>Tired</span></button>
+            <button class="mood-big-btn" data-mood="😌">😌<span>Calm</span></button>
+          </div>
+          <p id="mood-log-feedback" class="mood-feedback"></p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">📊 Weekly Mood Log</h3>
+          <div id="weekly-mood-log" class="weekly-mood-log"></div>
+        </div>
+      </section>
+
+      <!-- ── SATISFACTION SECTION ── -->
+      <section id="section-satisfaction" class="content-section">
+        <div class="section-header">
+          <h2>⭐ Satisfaction Tracker</h2>
+          <p>How satisfied are you with your day? 🌟</p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Rate your day (1–10)</h3>
+          <div class="rating-row" id="rating-row">
+            <!-- Generated by JS -->
+          </div>
+          <button id="save-rating" class="btn-primary" style="margin-top:1rem">💾 Save Rating</button>
+          <p id="rating-feedback" class="mood-feedback"></p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">📋 Past Ratings</h3>
+          <div id="past-ratings" class="past-ratings"></div>
+        </div>
+      </section>
+
+      <!-- ── QUICK NOTES SECTION ── -->
+      <section id="section-notes" class="content-section">
+        <div class="section-header">
+          <h2>📝 Quick Notes</h2>
+          <p>Capture your thoughts instantly 💡</p>
+        </div>
+        <div class="card form-card">
+          <input type="text" id="note-title" class="text-input" placeholder="📌 Note title..." />
+          <textarea id="note-body" class="textarea-input" placeholder="Write your thoughts here... 💭"
+            rows="5"></textarea>
+          <button id="save-note" class="btn-primary">💾 Save Note</button>
+        </div>
+        <div id="notes-list" class="notes-list"></div>
+      </section>
+
+      <!-- ── ANALYTICS SECTION ── -->
+      <section id="section-analytics" class="content-section">
+        <div class="section-header">
+          <h2>📊 Analytics</h2>
+          <p>A simple look at your week 🔍</p>
+        </div>
+        <div class="analytics-grid">
+          <div class="card analytics-card">
+            <h3 class="card-title">🎯 Goal Completion</h3>
+            <div id="analytics-goals" class="analytics-block"></div>
+          </div>
+          <div class="card analytics-card">
+            <h3 class="card-title">✅ Task Progress</h3>
+            <div id="analytics-tasks" class="analytics-block"></div>
+          </div>
+          <div class="card analytics-card">
+            <h3 class="card-title">😊 Mood Summary</h3>
+            <div id="analytics-mood" class="analytics-block"></div>
+          </div>
+          <div class="card analytics-card">
+            <h3 class="card-title">⭐ Satisfaction</h3>
+            <div id="analytics-satisfaction" class="analytics-block"></div>
+          </div>
+        </div>
+        <!-- Backup section inside analytics -->
+        <div class="card" style="margin-top:1.5rem">
+          <h3 class="card-title">💾 Data Backup</h3>
+          <div class="backup-row">
+            <button id="export-btn" class="btn-primary">📤 Export backup.json</button>
+            <label class="btn-secondary" for="import-file">📥 Import backup.json</label>
+            <input type="file" id="import-file" accept=".json" style="display:none" />
+          </div>
+          <p id="backup-feedback" class="mood-feedback"></p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--       VAULT PASSWORD POPUP                 -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div id="vault-popup" class="popup-overlay hidden">
+    <div class="popup-box vault-popup-box">
+      <div class="popup-emoji">🌑</div>
+      <h2 class="popup-title">Vault Access</h2>
+      <p class="popup-sub">Enter vault password to continue…</p>
+      <div class="input-group dark-input">
+        <span class="input-icon">🔑</span>
+        <input type="password" id="vault-password-input" placeholder="Vault password" />
+      </div>
+      <p id="vault-error" class="error-msg hidden">❌ Wrong password.</p>
+      <div class="popup-btns">
+        <button id="vault-enter-btn" class="btn-dark">Enter Vault 🚪</button>
+        <button id="vault-cancel-btn" class="btn-ghost">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--       MODE 2 — DIARY VAULT                 -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div id="vault-screen" class="screen vault-mode">
+
+    <!-- Moving particles canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- VAULT SIDEBAR -->
+    <aside class="vault-sidebar">
+      <div class="vault-logo">
+        <span class="vault-logo-emoji">🌑</span>
+        <span class="vault-logo-text">THE VAULT</span>
+      </div>
+      <nav class="vault-nav">
+        <a href="#" class="vault-nav-item active" data-vsection="vault-home">🕯️ Home</a>
+        <a href="#" class="vault-nav-item" data-vsection="vault-new">✍️ New Entry</a>
+        <a href="#" class="vault-nav-item" data-vsection="vault-entries">📂 All Entries</a>
+      </nav>
+      <div class="vault-sidebar-footer">
+        <button id="exit-vault-btn" class="exit-vault-btn">← Return to Light 🌞</button>
+      </div>
+    </aside>
+
+    <!-- VAULT MAIN -->
+    <main class="vault-main">
+
+      <!-- ── VAULT HOME ── -->
+      <section id="vsection-vault-home" class="vault-section active">
+        <div class="vault-welcome">
+          <h1 class="vault-welcome-title">Welcome back, Hemant.</h1>
+          <p class="vault-welcome-sub"><em>"This space holds no judgement. Only truth."</em></p>
+        </div>
+        <div class="vault-prompts">
+          <h3 class="vault-prompt-title">🌫️ Reflection Prompts</h3>
+          <div class="prompt-cards">
+            <div class="prompt-card">💧 What drained your energy today?</div>
+            <div class="prompt-card">🌊 What emotion stayed the longest?</div>
+            <div class="prompt-card">🌀 What are you avoiding emotionally?</div>
+            <div class="prompt-card">🕯️ What do you wish someone knew?</div>
+            <div class="prompt-card">🌑 What are you afraid to admit?</div>
+            <div class="prompt-card">🦋 What made you feel most alive?</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── NEW ENTRY ── -->
+      <section id="vsection-vault-new" class="vault-section">
+        <div class="vault-section-header">
+          <h2>✍️ New Diary Entry</h2>
+          <p>Write freely. No one else will read this.</p>
+        </div>
+        <div class="vault-form-card">
+          <input type="text" id="entry-title" class="vault-input" placeholder="Title your entry…" />
+          <input type="date" id="entry-date" class="vault-input" />
+          <textarea id="entry-body" class="vault-textarea"
+            placeholder="Pour it all out here…&#10;&#10;What happened? How did it feel? What do you want to remember?"></textarea>
+          <div class="vault-form-footer">
+            <label class="vault-lock-label">
+              <input type="checkbox" id="entry-lock" />
+              🔒 Lock this entry
+            </label>
+            <button id="save-entry-btn" class="btn-vault-primary">💾 Save Entry</button>
+          </div>
+          <p id="entry-save-feedback" class="vault-feedback"></p>
+        </div>
+      </section>
+
+      <!-- ── ALL ENTRIES ── -->
+      <section id="vsection-vault-entries" class="vault-section">
+        <div class="vault-section-header">
+          <h2>📂 All Entries</h2>
+          <p>Your private archive of thoughts.</p>
+        </div>
+        <div id="entries-list" class="entries-list"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- LOCKED ENTRY UNLOCK POPUP -->
+  <div id="entry-unlock-popup" class="popup-overlay hidden">
+    <div class="popup-box vault-popup-box">
+      <div class="popup-emoji">🔐</div>
+      <h2 class="popup-title">Locked Entry</h2>
+      <p class="popup-sub">Enter password to unlock this entry.</p>
+      <div class="input-group dark-input">
+        <span class="input-icon">🔑</span>
+        <input type="password" id="entry-unlock-input" placeholder="Entry password" />
+      </div>
+      <p id="entry-unlock-error" class="error-msg hidden">❌ Wrong password.</p>
+      <div class="popup-btns">
+        <button id="entry-unlock-btn" class="btn-dark">Unlock 🔓</button>
+        <button id="entry-unlock-cancel" class="btn-ghost">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW ENTRY MODAL -->
+  <div id="view-entry-modal" class="popup-overlay hidden">
+    <div class="popup-box entry-view-box">
+      <div class="entry-view-header">
+        <h2 id="view-entry-title" class="view-entry-title"></h2>
+        <span id="view-entry-date" class="view-entry-date"></span>
+      </div>
+      <div id="view-entry-body" class="view-entry-body"></div>
+      <div class="popup-btns">
+        <button id="close-view-btn" class="btn-ghost">Close</button>
+        <button id="delete-view-btn" class="btn-danger">🗑️ Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
