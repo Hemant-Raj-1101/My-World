@@ -8,10 +8,10 @@
 ───────────────────────────────────────────────────*/
 
 // Credentials — stored only in frontend (no server)
-const MAIN_USER = "Hemant Raj";
-const MAIN_PASS = "Hema0846.";
-const VAULT_PASS = "Hema5525.";
-const ENTRY_PASS = "Hema5525."; // same vault password for locked entries
+const MAIN_USER = "Abc";
+const MAIN_PASS = "Abc123";
+const VAULT_PASS = "Abcd1234";
+const ENTRY_PASS = "Abcd1234"; // same vault password for locked entries
 
 // Run when the page fully loads
 window.addEventListener("DOMContentLoaded", () => {
